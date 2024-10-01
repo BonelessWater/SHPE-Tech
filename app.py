@@ -29,11 +29,11 @@ def response(topic):
     model="gpt-4o-mini",
     messages=[
         # Testing messages
-        {"role": "system", "content": ""},
+        {"role": "system", "content": "Respond with html code"},
         {"role": "user", "content": f"Tell me everything you know about this topic: {topic}" }
     ]
     )
-    print(response)
+    
     return response.choices[0].message.content
 
 if __name__ == '__main__':
