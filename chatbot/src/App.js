@@ -4,10 +4,11 @@ function App() {
   const [topic, setTopic] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
 
+  // Takes input from the user
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Send the name to the Python backend
+    // Send the topic to the Python backend and waits for a response
     const response = await fetch('http://127.0.0.1:5000/api/greet', {
       method: 'POST',
       headers: {
@@ -21,6 +22,7 @@ function App() {
     setResponseMessage(data.message);
   };
 
+  // Returns an html component to the indeex.html file
   return (
     <div className="App">
       <h1>React & Flask Topic Explorer</h1>

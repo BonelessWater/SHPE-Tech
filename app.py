@@ -21,10 +21,13 @@ def greet():
 
 
 def response(topic):
+    # Fetches API key from the .env file
     api_key = os.getenv("OPENAI_API_KEY")
+
     # Send an API call to OpenAI to generate a response
     client = OpenAI(api_key=api_key)
 
+    # Awaits chatgpt for its response
     response = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
@@ -34,7 +37,8 @@ def response(topic):
     ]
     )
     
+    # Returns the part of the dictionary that only contains the text
     return response.choices[0].message.content
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5000, debug=True) # Runs on port 5000 be default
