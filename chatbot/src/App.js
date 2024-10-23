@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import "./App.css";
+import RoboGator from "./media/RoboGator.png";
+import { parseContent } from './parser';
 
-function App() {
+function App() { 
   const [topic, setTopic] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
 
@@ -22,23 +25,29 @@ function App() {
     setResponseMessage(data.message);
   };
 
-  // Returns an html component to the indeex.html file
+  // Returns an html component to the index.html file
   return (
     <div className="App">
-      <h1>React & Flask Topic Explorer</h1>
+      <img className="RoboGator" src={RoboGator}></img>
+      <div className= "TextBox">
+      {responseMessage ? <p>{parseContent(responseMessage)}</p> : <p>Ready to start learning about Data Structures and Algorithms? Ask a question, and lets get started.</p>}
+      </div>
+      <div className="Triangle-wrapper">
+        <div className="Triangle"></div>
+      </div>
       <form onSubmit={handleSubmit}>
-        <label>
-          Enter your name:
-          <input
-            type="text"
-            value={topic}
-            onChange={(e) => setTopic(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Submit</button>
+      <div className='Input'>
+        <input
+              placeholder="Enter your topic here"
+              className="input-field"
+              type="text"
+              value={topic}
+              onChange={(e) => setTopic(e.target.value)}
+              required
+            />
+        <button className="button" type="submit">↑</button>
+      </div>
       </form>
-      {responseMessage && <p>{responseMessage}</p>}
     </div>
   );
 }
