@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./App.css";
 import RoboGator from "./media/RoboGator.png";
+import { parseContent } from './parser';
 
 function App() { 
   const [topic, setTopic] = useState('');
@@ -24,12 +25,12 @@ function App() {
     setResponseMessage(data.message);
   };
 
-  // Returns an html component to the indeex.html file
+  // Returns an html component to the index.html file
   return (
     <div className="App">
       <img className="RoboGator" src={RoboGator}></img>
       <div className= "TextBox">
-      {responseMessage ? <p>{responseMessage}</p> : <p>Ready to start learning about Data Structures and Algorithms? Ask a question, and lets get started.</p>}
+      {responseMessage ? <p>{parseContent(responseMessage)}</p> : <p>Ready to start learning about Data Structures and Algorithms? Ask a question, and lets get started.</p>}
       </div>
       <div className="Triangle-wrapper">
         <div className="Triangle"></div>
