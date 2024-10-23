@@ -1,27 +1,74 @@
-# React Project Setup Guide
+# Project Setup Guide
 
-This guide provides step-by-step instructions to set up a React project from scratch using `create-react-app`.
+## Table of Contents
+1. [Prerequisites](#prerequisites)
+2. [Setup Python Virtual Environment](#setup-python-virtual-environment)
+3. [Install Backend Dependencies](#install-backend-dependencies)
+4. [Setup Frontend (Node & NPM)](#setup-frontend-node--npm)
+5. [Running the Flask App](#running-the-flask-app)
+6. [Testing the Setup](#testing-the-setup)
+7. [Troubleshooting](#troubleshooting)
+8. [Summary](#summary)
+
+---
 
 ## Prerequisites
 
-Before setting up your React project, make sure you have the following installed on your machine:
+Make sure you have the following software installed on your system:
 
-1. **Node.js**: React requires Node.js to run. You can download and install the latest version of Node.js from [Node.js official site](https://nodejs.org/).
-2. **npm or yarn**: Both npm (which comes with Node.js) and yarn can be used as package managers for a React project. Choose one to use for this guide.
-   - To verify if npm is installed, run: 
-     ```bash
-     npm -v
-     ```
-   - To verify if yarn is installed, run: 
-     ```bash
-     yarn -v
-     ```
+- **Python** (Version 3.8 or higher)
+- **pip** (Python package manager)
+- **Node.js** and **npm** (Node Package Manager)
+- **Flask** (Python microframework)
 
-## Getting Started
+### Check if Python and pip are installed:
+```bash
+python --version
+pip --version
+```
 
-### 1. Install `create-react-app`
+### Check if Node.js and npm are installed:
+```bash
+node --version
+npm --version
+```
 
-`create-react-app` is an officially supported command-line tool to set up a new React project. Install it globally if you haven't already.
+###Setup Python Virtual Environment
+It’s recommended to create a virtual environment to isolate dependencies.
+
+Create a virtual environment:
+```bash
+python -m venv venv
+```
+
+###Activate the virtual environment:
+Windows:
 
 ```bash
-npm install -g create-react-app
+venv\Scripts\activate
+```
+macOS/Linux:
+```bash
+source venv/bin/activate
+```
+Verify the virtual environment is active.
+You should see (venv) at the beginning of your terminal prompt.
+
+# Install Backend Dependencies
+
+With the virtual environment activated, install the required Python packages.
+
+### Create a `requirements.txt` file if it doesn't exist. Add the required packages:
+
+```makefile
+requirements.txt
+Flask==2.3.2
+flask_cors
+python_dotenv
+openai
+```
+
+Install dependencies using pip:
+```bash
+pip install -r requirements.txt
+```
