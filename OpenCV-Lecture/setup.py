@@ -2,11 +2,13 @@ import sys
 from cx_Freeze import setup, Executable
 
 build_exe_options = {
-    "packages": ["mediapipe", "cv2"],
+    "packages": ["mediapipe", "cv2", "pyautogui"],
     "include_files": [
+        "sfx",
+        "bluetoothcl",
         "windowsScripts",
         "ASL.py",
-        "main.py"
+        "main.py",
     ]
 }
 
