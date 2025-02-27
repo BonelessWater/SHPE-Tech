@@ -16,7 +16,7 @@ def print_mouse_position():
     except KeyboardInterrupt:
         print("\nFinished capturing mouse positions.")
 
-print_mouse_position()
+#print_mouse_position()
 
 # -------------------------------
 # Wait for and maximize a window by keyword in its title
@@ -72,7 +72,7 @@ def bluetooth_connect():
 # -------------------------------
 def spotify_play():
     os.startfile("spotify:")
-    time.sleep(5)  # Wait for Spotify to load
+    time.sleep(1)  # Wait for Spotify to load
 
     if wait_and_maximize("Spotify", timeout=10):
         print("Spotify window maximized.")
@@ -82,6 +82,10 @@ def spotify_play():
     # Click on the Play button (update these coordinates as needed)
     play_button_coords = (1277, 1309)  # Adjust as necessary
     pyautogui.moveTo(play_button_coords[0], play_button_coords[1], duration=0.2)
+    pyautogui.click()
+
+    minimize_button_coords = (2420, 39)
+    pyautogui.moveTo(minimize_button_coords[0], minimize_button_coords[1], duration=0.2)
     pyautogui.click()
 
 def main():

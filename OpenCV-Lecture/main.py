@@ -177,18 +177,28 @@ def main():
                             2,
                             cv2.LINE_AA)
 
-            # --- B Sign Detection ---
+            # --- B Right Sign Detection ---
             if startup_mode:
-                if "B" in detected_letters:
+                if "B" in detected_letters and hand_label == "Right":
                     if b_sign_start_time is None:
                         b_sign_start_time = time.time()  # Start timer when B is first seen
                     elif time.time() - b_sign_start_time >= 1.0:
                         print("B sign held for a second, running bluetooth_connect() and spotify_play()")
-                        bluetooth.bluetooth_connect()
+                        #bluetooth.bluetooth_connect() # commented out for lecture
                         bluetooth.spotify_play()
                         b_sign_start_time = None
+                elif "B" in detected_letters and hand_label == "Left":
+                    if b_sign_start_time is None:
+                        b_sign_start_time = time.time()  # Start timer when B is first seen
+                    elif time.time() - b_sign_start_time >= 1.0:
+                        print("B sign held for a second, running desktop clean")
+                        # Execute the PowerShell script.
+                        subprocess.run([
+                            "powershell", "-ExecutionPolicy", "Bypass", "-File", "windowsScripts/clean_desktop.ps1"
+                        ])
                 else:
                     b_sign_start_time = None
+                
 
             # --- Swipe Detection (Only if startup_mode is active) ---
             if startup_mode:
